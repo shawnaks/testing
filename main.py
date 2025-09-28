@@ -1,6 +1,7 @@
 from typing import Optional
 
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 import torch
 import torchvision.transforms as transforms
 from PIL import Image
@@ -9,6 +10,14 @@ import torch.nn as nn
 import torchvision.models as models
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],      # <- allows requests from any domain
+    allow_credentials=True,
+    allow_methods=["*"],      # GET, POST, PUT, DELETE, etc.
+    allow_headers=["*"],      # allow all headers
+)
 
 
 @app.get("/")
