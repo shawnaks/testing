@@ -41,8 +41,8 @@ class TransferLearningModel(nn.Module):
 
 # Load model checkpoint (adjust path as needed)
 checkpoint = torch.load(
-    "../lost_found_model_acc_*.pth", map_location="cpu"
-)  # Replace with actual filename
+    "model.pth", map_location="cpu"
+)  # Using the model.pth file in the render directory
 num_classes = checkpoint["num_classes"]
 class_names = checkpoint["class_names"]
 model = TransferLearningModel(num_classes)
